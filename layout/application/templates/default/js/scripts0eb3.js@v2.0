@@ -1,0 +1,245 @@
+$(document).ready(function(){
+	
+	/**********************************************
+	************* Window Controller ***************
+	**********************************************/
+	
+	$('[data-open-popup]').click(function(event){
+		event.preventDefault();
+		var wnd_name = $(this).attr('data-open-popup');
+		$('[data-name-popup]').removeClass("active");
+		$('[data-name-popup=' + wnd_name + ']').addClass("active");
+	});
+	
+	$('.popup__cancel, .popup-cancel').click(function(event){
+		$('[data-name-popup]').removeClass("active");
+	});
+
+	$(document).mousedown(function (e){
+		if (!$(".popup__box").is(e.target) && $(".popup__box").has(e.target).length === 0) {
+			$('[data-name-popup]').removeClass("active");
+		}
+	});
+	
+	/**********************************************
+	*************** Support Messages **************
+	**********************************************/
+
+	$('*').hover(function(){
+		// Событие при навидении курсора
+		if($(this).attr('data-desc'))
+		{	
+			var elem_position = $(this).offset();
+
+			var elem_width = $(this).outerWidth();
+			var elem_height = $(this).outerHeight();
+			var elem_x = elem_position['left'];
+			var elem_y = elem_position['top'];
+
+			$('body').append('<div class="hint_msg">' + $(this).attr('data-desc') + '</div>');
+
+			var msg_position = $('.hint_msg').offset();
+			var msg_width = $('.hint_msg').outerWidth();
+			var msg_height = $('.hint_msg').outerHeight();
+
+			// Позиционируем подсказку по Y (учитываем камки окна браузера)
+			if(elem_y < (msg_height + 10)){
+				$('.hint_msg').css('top', (elem_y + elem_height + 8) + 'px');
+			}
+			else{
+				$('.hint_msg').css('top', (elem_y - msg_height - 8) + 'px');
+			}
+
+			// Позиционируем подсказку по X (учитываем камки окна браузера)
+			if(5 > ((elem_x + elem_width / 2) - msg_width / 2)){
+				$('.hint_msg').css('left', elem_x + 'px');
+			}
+			else if( ($(window).width() - 5) < ((elem_x + elem_width / 2) + msg_width / 2)){
+				$('.hint_msg').css('left', ((elem_x + elem_width) - msg_width) + 'px');
+			}
+			else{
+				$('.hint_msg').css('left', ((elem_x + (elem_width / 2)) - msg_width / 2) + 'px');
+			}
+		}
+	},function(){
+		// Событие при покидании курсора
+		if($(this).attr('data-desc')){
+			$('.hint_msg').remove();
+		}
+		
+	});
+	
+	/**********************************************
+	************* Drop Box Controller *************
+	**********************************************/
+	
+	function dropBox(classButton, classBox){
+		$(classButton).click(function(event){
+			if( $(this).parent().find(classBox).is(':hidden') ){
+				$(this).parent().find(classBox).slideToggle(200);
+			}
+		});
+		
+		$(document).mouseup(function (e){
+			if (!$(classBox).is(e.target) && $(classBox).has(e.target).length === 0) {
+				$(classBox + ':visible').slideToggle(200);
+			}
+		});
+	}
+	
+	dropBox('.open-drop-box', '.drop-box');
+	
+	/**********************************************
+	*********** Progress Bar Controller ***********
+	**********************************************/
+	
+	$('.servers__item-progress-bg').each(function(index, element) {
+        server_id = $(element).attr('data-id-progress');
+        max_online = {
+			1: 1000, // максимальный онлайн для сервера с id = 1
+			2: 1000, // максимальный онлайн для сервера с id = 2
+			3: 1000, // максимальный онлайн для сервера с id = 3
+			4: 1000, // максимальный онлайн для сервера с id = 4
+			5: 1000, // максимальный онлайн для сервера с id = 5
+		}
+
+		if(server_id){
+			$('.servers__item-progress-bg[data-id-progress = ' + server_id + ']').circleProgress({
+				value: $('.servers__item-progress-bg[data-id-progress = ' + server_id + ']').attr('data-online')/max_online[server_id],
+				size: 140,
+				thickness: 6,
+				startAngle: 4.73,
+				emptyFill: 'rgba(0,0,0,0)',
+				fill: { image: "/application/templates/default/images/bg/progress_bar.png" }
+			});
+		}
+  	});
+	
+	/**********************************************
+	******************* Anounce *******************
+	**********************************************/
+
+	var this_time = new Date().getTime();
+	
+	if(!get_cookie("anounce_status")){
+		$(".anounce").css("animation", "anounce_anim_on 1s forwards .5s");
+	}
+	else if(get_cookie("anounce_status") < this_time){
+		$(".anounce").css("animation", "anounce_anim_on 1s forwards .5s");
+	}
+	
+	$(".anounce__closed").click(function(event){
+		var anounce_cookie_time = new Date().getTime();
+		anounce_cookie_time = anounce_cookie_time + ( 1000 * 60 * 60 * 24 ); // на 24 часов
+		$(".anounce").css("animation", "anounce_anim_off 1s forwards 0s");
+		set_cookie( "anounce_status", anounce_cookie_time);
+	});
+	
+	/**********************************************
+	******************* Bonuses *******************
+	**********************************************/
+	
+	$('.ref-system__bonuses-bonus').mousemove(function(event) { 
+		
+		var pos = $(this).offset();
+		var pageX = event.pageX;
+		var pageY = event.pageY;
+		var x = pageX - pos.left + 10;
+		var y = pageY - pos.top + 10;
+
+		$(this).children(".ref-system__bonuses-items").css({
+			'opacity' : '1',
+			'left' : x + 'px',
+			'top' : y + 'px'
+		});
+
+	});
+	
+	$('.ref-system__bonuses-bonus').mouseout(function() {
+		$(this).children(".ref-system__bonuses-items").css({
+			'opacity' : '0'
+			
+		});
+	});
+	
+	/**********************************************
+	****************** copy link ******************
+	**********************************************/
+	
+	$(".ref-system__my-link-copy").click(function(event){
+		event.preventDefault();
+		
+		var ref_link = $(".ref-system__input");
+		
+		ref_link.select();  		
+		document.execCommand("copy");
+		
+		$('.messages').append('<div class="messages__message success"><div class="messages__title">Ваша реферальная ссылка скопирована в буфер обмена!</div><div class="messages__bar"></div></div>');
+	});
+	
+	/**********************************************
+	*************** toggle blocks *****************
+	**********************************************/
+	
+	$('.global-desc').MVisionToggleClass({
+		classButton: 'global-desc__nav-item',
+		toggleClassButton: 'active',
+		dataButtonAttr: 'data-open-tab',
+		classBox: 'global-desc__content-item',
+		toggleClassBox: 'active',
+		dataBoxAttr: 'data-name-tab',
+		defaultElement: true,
+		defaultIndexElement: 0,
+		ancoreLinks: true,
+	});
+	
+	$('.global-desc__content-box').MVisionToggleClass({
+		classButton: 'desc-newcontent__nav-item',
+		toggleClassButton: 'active',
+		dataButtonAttr: 'data-open-tab',
+		classBox: 'desc-newcontent-box__box',
+		toggleClassBox: 'active',
+		dataBoxAttr: 'data-name-tab',
+		ancoreLinks: true,
+		ancoreParent: 'content',
+	});
+	
+	/**********************************************
+	*************** image sliders *****************
+	**********************************************/
+	
+	$("#img-slider-1").MVisionSlider({
+		animationSlide: 'horizontal',
+		autoSlide: false,
+		animationTimeSlide: 800,
+		showMarkers: true,
+		iconMarker: '<i class="far fa-dot-circle"></i>',
+		showArrows: true,
+		iconPrevArrow: '<i class="far fa-chevron-left"></i>',
+		iconNextArrow: '<i class="far fa-chevron-right"></i>',
+		
+	});
+	
+	$("#img-slider-2").MVisionSlider({
+		animationSlide: 'horizontal',
+		autoSlide: false,
+		animationTimeSlide: 800,
+		showMarkers: true,
+		iconMarker: '<i class="far fa-dot-circle"></i>',
+		showArrows: true,
+		iconPrevArrow: '<i class="far fa-chevron-left"></i>',
+		iconNextArrow: '<i class="far fa-chevron-right"></i>',
+	});
+	
+	/**********************************************
+	******************* Timeline ******************
+	**********************************************/
+
+	setTimeout( function() {
+		$('.home-timeline__mount-item').each(function(i, elem){
+			setTimeout(function(){ $(elem).addClass('show-item'); }, 100 * i);
+		});
+	}, 300);
+
+});
+

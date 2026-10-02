@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascension Online - Homepage Mockups</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cinzel:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================= */
+/* MOCKUP SELECTOR                               */
+/* ============================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+}
+
+.mockup-selector {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.mockup-selector span {
+    font-size: 13px;
+    color: #888;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mockup-selector button {
+    padding: 8px 24px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.mockup-selector button:hover,
+.mockup-selector button.active {
+    background: linear-gradient(135deg, #d4a843, #b8892e);
+    color: #000;
+    border-color: #d4a843;
+}
+
+.mockup-page { display: none; }
+.mockup-page.active { display: block; }
+
+/* ============================================= */
+/* VARIANT A — "CINEMATIC DARK"                  */
+/* Clean, modern, cinematic feel with particles   */
+/* ============================================= */
+.va-body {
+    background: #08080c;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.va-nav {
+    background: rgba(8,8,12,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212,168,67,0.1);
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.va-nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f5d780, #d4a843, #b8892e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+}
+
+.va-nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.va-nav-links a {
+    color: #8a8a8a;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.va-nav-links a:hover {
+    color: #d4a843;
+}
+
+.va-nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d4a843;
+    transition: width 0.3s;
+}
+
+.va-nav-links a:hover::after {
+    width: 100%;
+}
+
+.va-nav-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.va-btn-ghost {
+    padding: 8px 20px;
+    border: 1px solid rgba(212,168,67,0.3);
+    background: transparent;
+    color: #d4a843;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.va-btn-ghost:hover {
+    background: rgba(212,168,67,0.1);
+    border-color: #d4a843;
+}
+
+.va-btn-primary {
+    padding: 8px 24px;
+    border: none;
+    background: linear-gradient(135deg, #d4a843, #b8892e);
+    color: #000;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.va-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(212,168,67,0.3);
+}
+
+/* Hero */
+.va-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.va-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(212,168,67,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(139,92,246,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212,168,67,0.03) 0%, transparent 50%);
+}
+
+.va-hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,168,67,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: va-pulse 4s ease-in-out infinite;
+}
+
+@keyframes va-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.va-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.va-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(212,168,67,0.1);
+    border: 1px solid rgba(212,168,67,0.2);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d4a843;
+    margin-bottom: 32px;
+}
+
+.va-hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: va-blink 2s infinite;
+}
+
+@keyframes va-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.va-hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.va-hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #f5d780, #d4a843);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.va-hero-sub {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.va-hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.va-btn-hero {
+    padding: 14px 36px;
+    border: none;
+    background: linear-gradient(135deg, #d4a843, #b8892e);
+    color: #000;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.va-btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(212,168,67,0.35);
+}
+
+.va-btn-hero-outline {
+    padding: 14px 36px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.03);
+    color: #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.va-btn-hero-outline:hover {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.06);
+}
+
+/* Stats bar */
+.va-stats {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.va-stat {
+    text-align: center;
+}
+
+.va-stat-value {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #d4a843;
+    margin-bottom: 4px;
+}
+
+.va-stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+}
+
+/* Features */
+.va-features {
+    padding: 80px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.va-feature {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.va-feature:hover {
+    border-color: rgba(212,168,67,0.2);
+    background: rgba(212,168,67,0.03);
+    transform: translateY(-4px);
+}
+
+.va-feature-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(212,168,67,0.15), rgba(212,168,67,0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+}
+
+.va-feature h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #eee;
+}
+
+.va-feature p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* News Section */
+.va-news {
+    padding: 60px 60px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.va-section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #eee;
+}
+
+.va-section-sub {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.va-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.va-news-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.2s;
+}
+
+.va-news-card:hover {
+    border-color: rgba(212,168,67,0.15);
+}
+
+.va-news-date {
+    font-size: 11px;
+    color: #d4a843;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.va-news-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ddd;
+}
+
+.va-news-card p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Footer */
+.va-footer {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.va-footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #d4a843;
+}
+
+.va-footer-text {
+    font-size: 12px;
+    color: #444;
+}
+
+/* ============================================= */
+/* VARIANT B — "IMMERSIVE RPG"                   */
+/* Fantasy aesthetic with ornate borders & glow   */
+/* ============================================= */
+.vb-body {
+    background: #0c0a08;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.vb-nav {
+    background: linear-gradient(180deg, rgba(20,16,10,0.98) 0%, rgba(12,10,8,0.95) 100%);
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, transparent, #d4a843, #8b5e1a, #d4a843, transparent) 1;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+}
+
+.vb-nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #d4a843;
+    text-shadow: 0 0 30px rgba(212,168,67,0.3);
+    letter-spacing: 4px;
+}
+
+.vb-nav-links {
+    display: flex;
+    gap: 6px;
+    list-style: none;
+}
+
+.vb-nav-links a {
+    color: #a09080;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 8px 18px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.vb-nav-links a:hover {
+    color: #d4a843;
+    background: rgba(212,168,67,0.08);
+}
+
+.vb-btn-play {
+    padding: 10px 32px;
+    border: 2px solid #d4a843;
+    background: linear-gradient(180deg, rgba(212,168,67,0.15) 0%, transparent 100%);
+    color: #d4a843;
+    border-radius: 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-shadow: 0 0 20px rgba(212,168,67,0.3);
+}
+
+.vb-btn-play:hover {
+    background: linear-gradient(180deg, rgba(212,168,67,0.25) 0%, rgba(212,168,67,0.05) 100%);
+    box-shadow: 0 0 40px rgba(212,168,67,0.2), inset 0 0 40px rgba(212,168,67,0.05);
+}
+
+/* Hero */
+.vb-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 60px;
+}
+
+.vb-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 30% 40%, rgba(212,168,67,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(139,69,19,0.06) 0%, transparent 50%),
+        linear-gradient(180deg, transparent 0%, rgba(12,10,8,0.8) 100%);
+}
+
+/* Ornate corner decorations */
+.vb-hero::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid rgba(212,168,67,0.08);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.vb-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+}
+
+.vb-hero-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(212,168,67,0.12);
+    border: 1px solid rgba(212,168,67,0.25);
+    color: #d4a843;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+}
+
+.vb-hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 62px;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color: #f5e6c8;
+    text-shadow: 0 2px 40px rgba(212,168,67,0.15);
+}
+
+.vb-hero h1 span {
+    color: #d4a843;
+    text-shadow: 0 0 40px rgba(212,168,67,0.4);
+}
+
+.vb-hero-desc {
+    font-size: 16px;
+    color: #7a6f60;
+    line-height: 1.8;
+    margin-bottom: 36px;
+}
+
+.vb-hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.vb-btn-gold {
+    padding: 14px 40px;
+    border: 2px solid #d4a843;
+    background: linear-gradient(180deg, #d4a843 0%, #a07828 100%);
+    color: #1a1000;
+    border-radius: 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(212,168,67,0.3);
+}
+
+.vb-btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(212,168,67,0.4);
+}
+
+.vb-btn-download {
+    padding: 14px 32px;
+    border: 1px solid rgba(212,168,67,0.2);
+    background: transparent;
+    color: #a09080;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vb-btn-download:hover {
+    border-color: rgba(212,168,67,0.4);
+    color: #d4a843;
+}
+
+/* Right side stats */
+.vb-hero-right {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.vb-server-card {
+    background: rgba(20,16,10,0.8);
+    border: 1px solid rgba(212,168,67,0.1);
+    border-radius: 8px;
+    padding: 20px 28px;
+    min-width: 220px;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s;
+}
+
+.vb-server-card:hover {
+    border-color: rgba(212,168,67,0.25);
+}
+
+.vb-server-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #665940;
+    margin-bottom: 6px;
+}
+
+.vb-server-card-value {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #d4a843;
+}
+
+.vb-server-card-extra {
+    font-size: 12px;
+    color: #7a6f60;
+    margin-top: 4px;
+}
+
+.vb-server-card .online-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    margin-right: 6px;
+    box-shadow: 0 0 12px rgba(74,222,128,0.5);
+    animation: va-blink 2s infinite;
+}
+
+/* Feature strip */
+.vb-features {
+    padding: 0 60px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vb-feature-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid rgba(212,168,67,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.vb-feat {
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(212,168,67,0.06);
+    background: rgba(20,16,10,0.5);
+    transition: all 0.2s;
+}
+
+.vb-feat:last-child {
+    border-right: none;
+}
+
+.vb-feat:hover {
+    background: rgba(212,168,67,0.04);
+}
+
+.vb-feat-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.vb-feat h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #d4a843;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.vb-feat p {
+    font-size: 12px;
+    color: #665940;
+    line-height: 1.5;
+}
+
+/* News */
+.vb-news {
+    padding: 60px 60px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vb-news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(212,168,67,0.1);
+    padding-bottom: 16px;
+}
+
+.vb-news-title {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #f5e6c8;
+}
+
+.vb-news-link {
+    font-size: 12px;
+    color: #d4a843;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.vb-news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.vb-news-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    background: rgba(20,16,10,0.5);
+    border: 1px solid rgba(212,168,67,0.05);
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.vb-news-item:hover {
+    border-color: rgba(212,168,67,0.15);
+    background: rgba(212,168,67,0.03);
+}
+
+.vb-news-item-date {
+    font-size: 11px;
+    color: #665940;
+    font-weight: 600;
+    min-width: 100px;
+}
+
+.vb-news-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #c8b89a;
+    flex: 1;
+}
+
+.vb-news-item-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(212,168,67,0.1);
+    color: #d4a843;
+}
+
+/* Footer */
+.vb-footer {
+    border-top: 2px solid;
+    border-image: linear-gradient(90deg, transparent, rgba(212,168,67,0.2), transparent) 1;
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vb-footer-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #d4a843;
+}
+
+.vb-footer-copy {
+    font-size: 11px;
+    color: #3a3020;
+}
+
+/* ============================================= */
+/* VARIANT C — "MODERN GAMING"                   */
+/* Bold, vibrant, glassmorphism, gradients        */
+/* ============================================= */
+.vc-body {
+    background: #0b0b10;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.vc-nav {
+    background: rgba(11,11,16,0.85);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.vc-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vc-nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #d4a843, #8b5e1a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: #000;
+}
+
+.vc-nav-logo-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.vc-nav-center {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.vc-nav-center a {
+    color: #666;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.vc-nav-center a:hover,
+.vc-nav-center a.active {
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+}
+
+.vc-nav-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.vc-btn-login {
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: #999;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vc-btn-login:hover {
+    border-color: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.vc-btn-register {
+    padding: 8px 22px;
+    border: none;
+    background: linear-gradient(135deg, #d4a843, #e8c36a);
+    color: #000;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.vc-btn-register:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(212,168,67,0.3);
+}
+
+/* Hero */
+.vc-hero {
+    padding: 80px 48px 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: 75vh;
+}
+
+.vc-hero-content {
+    position: relative;
+}
+
+.vc-hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(74,222,128,0.08);
+    border: 1px solid rgba(74,222,128,0.2);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4ade80;
+    margin-bottom: 24px;
+}
+
+.vc-hero-status .pulse {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(74,222,128,0.6);
+    animation: va-blink 2s infinite;
+}
+
+.vc-hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.vc-hero h1 .gold {
+    background: linear-gradient(135deg, #f5d780, #d4a843);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.vc-hero-desc {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 480px;
+}
+
+.vc-hero-cta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.vc-btn-big {
+    padding: 14px 32px;
+    border: none;
+    background: linear-gradient(135deg, #d4a843, #e8c36a);
+    color: #000;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vc-btn-big:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(212,168,67,0.35);
+}
+
+.vc-btn-big-outline {
+    padding: 14px 28px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    color: #aaa;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vc-btn-big-outline:hover {
+    border-color: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+/* Right panel — glass cards */
+.vc-hero-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.vc-glass-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+.vc-glass-card:hover {
+    border-color: rgba(212,168,67,0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+.vc-glass-card.wide {
+    grid-column: span 2;
+}
+
+.vc-glass-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.vc-glass-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+}
+
+.vc-glass-card-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(74,222,128,0.1);
+    color: #4ade80;
+    letter-spacing: 1px;
+}
+
+.vc-glass-card-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.vc-glass-card-sub {
+    font-size: 12px;
+    color: #444;
+}
+
+.vc-glass-card-player {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vc-glass-card-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #d4a843, #8b5e1a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.vc-glass-card-player-info h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ddd;
+}
+
+.vc-glass-card-player-info p {
+    font-size: 12px;
+    color: #555;
+}
+
+/* Features row */
+.vc-features {
+    padding: 20px 48px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.vc-feat-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.2s;
+    cursor: default;
+}
+
+.vc-feat-card:hover {
+    border-color: rgba(212,168,67,0.15);
+    background: rgba(255,255,255,0.03);
+}
+
+.vc-feat-emoji {
+    font-size: 28px;
+    margin-bottom: 14px;
+}
+
+.vc-feat-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ddd;
+    margin-bottom: 6px;
+}
+
+.vc-feat-card p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* News */
+.vc-news {
+    padding: 40px 48px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.vc-news-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.vc-news-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.vc-news-more {
+    font-size: 13px;
+    color: #d4a843;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.vc-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.vc-news-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.vc-news-card:hover {
+    border-color: rgba(212,168,67,0.15);
+    transform: translateY(-2px);
+}
+
+.vc-news-card-gradient {
+    height: 120px;
+    background: linear-gradient(135deg, rgba(212,168,67,0.1), rgba(139,94,26,0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+}
+
+.vc-news-card-body {
+    padding: 20px;
+}
+
+.vc-news-card-date {
+    font-size: 11px;
+    color: #d4a843;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.vc-news-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ddd;
+    margin-bottom: 8px;
+}
+
+.vc-news-card p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Footer */
+.vc-footer {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.vc-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vc-footer-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #d4a843, #8b5e1a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 14px;
+    color: #000;
+}
+
+.vc-footer-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #555;
+}
+
+.vc-footer-copy {
+    font-size: 11px;
+    color: #333;
+}
+</style>
+</head>
+<body>
+
+<!-- MOCKUP SELECTOR BAR -->
+<div class="mockup-selector">
+    <span>Mockup:</span>
+    <button class="active" onclick="show('a')">A — Cinematic Dark</button>
+    <button onclick="show('b')">B — Immersive RPG</button>
+    <button onclick="show('c')">C — Modern Gaming</button>
+</div>
+
+<!-- ======================================== -->
+<!-- VARIANT A — CINEMATIC DARK               -->
+<!-- ======================================== -->
+<div id="mockup-a" class="mockup-page active">
+<div class="va-body">
+    <nav class="va-nav">
+        <div class="va-nav-logo">ASCENSION</div>
+        <div class="va-nav-links">
+            <a href="#">Home</a>
+            <a href="#">Library</a>
+            <a href="#">Highscores</a>
+            <a href="#">Forum</a>
+            <a href="#">Store</a>
+        </div>
+        <div class="va-nav-actions">
+            <button class="va-btn-ghost">Login</button>
+            <button class="va-btn-primary">Register</button>
+        </div>
+    </nav>
+
+    <section class="va-hero">
+        <div class="va-hero-content">
+            <div class="va-hero-badge">
+                <span class="dot"></span>
+                Server Online
+            </div>
+            <h1>Enter the<br>World of <em>Ascension</em></h1>
+            <p class="va-hero-sub">A custom RPG experience with unique classes, deep dungeons, and a player-driven economy. No pay-to-win, just adventure.</p>
+            <div class="va-hero-buttons">
+                <button class="va-btn-hero">Start Playing</button>
+                <button class="va-btn-hero-outline">Download Client</button>
+            </div>
+            <div class="va-stats">
+                <div class="va-stat">
+                    <div class="va-stat-value">247</div>
+                    <div class="va-stat-label">Online Now</div>
+                </div>
+                <div class="va-stat">
+                    <div class="va-stat-value">11</div>
+                    <div class="va-stat-label">Classes</div>
+                </div>
+                <div class="va-stat">
+                    <div class="va-stat-value">485</div>
+                    <div class="va-stat-label">Top Level</div>
+                </div>
+                <div class="va-stat">
+                    <div class="va-stat-value">1.2K</div>
+                    <div class="va-stat-label">Accounts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="va-features">
+        <div class="va-feature">
+            <div class="va-feature-icon">&#9876;</div>
+            <h3>11 Unique Classes</h3>
+            <p>From Magician to Monk, each with distinct playstyles and progression paths.</p>
+        </div>
+        <div class="va-feature">
+            <div class="va-feature-icon">&#127984;</div>
+            <h3>Deep Dungeons</h3>
+            <p>Challenge tiered dungeons with unique mechanics, bosses, and exclusive loot.</p>
+        </div>
+        <div class="va-feature">
+            <div class="va-feature-icon">&#10024;</div>
+            <h3>Custom Systems</h3>
+            <p>Passive skills, paragon boards, fame system, and more unique mechanics.</p>
+        </div>
+        <div class="va-feature">
+            <div class="va-feature-icon">&#127942;</div>
+            <h3>Weekly Events</h3>
+            <p>Zone events, PvP tournaments, and special seasonal content every week.</p>
+        </div>
+    </div>
+
+    <div class="va-news">
+        <div class="va-section-title">Latest News</div>
+        <p class="va-section-sub">Stay up to date with the latest updates and patches</p>
+        <div class="va-news-grid">
+            <div class="va-news-card">
+                <div class="va-news-date">Feb 10, 2026</div>
+                <h4>New Dungeon: The Abyss of Shadows</h4>
+                <p>A brand new end-game dungeon awaits brave adventurers. Tier 3 gear drops included.</p>
+            </div>
+            <div class="va-news-card">
+                <div class="va-news-date">Feb 08, 2026</div>
+                <h4>Balance Patch v1.4.3</h4>
+                <p>Major adjustments to Nightblade and Stellar classes. Check the full changelog.</p>
+            </div>
+            <div class="va-news-card">
+                <div class="va-news-date">Feb 05, 2026</div>
+                <h4>Valentine's Event Starting Soon</h4>
+                <p>Special quests, cosmetics, and double XP weekend coming this Friday!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="va-footer">
+        <div class="va-footer-logo">ASCENSION</div>
+        <div class="va-footer-text">&copy; 2026 Ascension Online. All rights reserved.</div>
+    </footer>
+</div>
+</div>
+
+<!-- ======================================== -->
+<!-- VARIANT B — IMMERSIVE RPG                -->
+<!-- ======================================== -->
+<div id="mockup-b" class="mockup-page">
+<div class="vb-body">
+    <nav class="vb-nav">
+        <div class="vb-nav-logo">ASCENSION</div>
+        <div class="vb-nav-links">
+            <a href="#">Home</a>
+            <a href="#">Library</a>
+            <a href="#">Highscores</a>
+            <a href="#">Forum</a>
+            <a href="#">Store</a>
+            <a href="#">Download</a>
+        </div>
+        <button class="vb-btn-play">Play Now</button>
+    </nav>
+
+    <section class="vb-hero">
+        <div class="vb-hero-content">
+            <div class="vb-hero-tag">&#9733; Season 2 Now Live</div>
+            <h1>Forge Your<br><span>Legend</span></h1>
+            <p class="vb-hero-desc">A dark fantasy RPG world with 11 unique classes, brutal dungeons, and a community-driven adventure. Your legend starts here.</p>
+            <div class="vb-hero-actions">
+                <button class="vb-btn-gold">Begin Your Journey</button>
+                <button class="vb-btn-download">&#8681; Download Client</button>
+            </div>
+        </div>
+
+        <div class="vb-hero-right">
+            <div class="vb-server-card">
+                <div class="vb-server-card-label">Server Status</div>
+                <div class="vb-server-card-value"><span class="online-dot"></span>247</div>
+                <div class="vb-server-card-extra">Players exploring the world</div>
+            </div>
+            <div class="vb-server-card">
+                <div class="vb-server-card-label">Top Adventurer</div>
+                <div class="vb-server-card-value" style="font-size:22px; color:#f5e6c8;">nokturno</div>
+                <div class="vb-server-card-extra">Level 485 &mdash; Dragon Knight</div>
+            </div>
+            <div class="vb-server-card">
+                <div class="vb-server-card-label">Next Event</div>
+                <div class="vb-server-card-value" style="font-size:20px; color:#f5e6c8;">Boss Rush</div>
+                <div class="vb-server-card-extra">Starts in 2h 45m</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="vb-features">
+        <div class="vb-feature-strip">
+            <div class="vb-feat">
+                <div class="vb-feat-icon">&#9876;</div>
+                <h4>11 Classes</h4>
+                <p>Unique roles & builds</p>
+            </div>
+            <div class="vb-feat">
+                <div class="vb-feat-icon">&#127984;</div>
+                <h4>Dungeons</h4>
+                <p>Tiered PvE challenges</p>
+            </div>
+            <div class="vb-feat">
+                <div class="vb-feat-icon">&#10024;</div>
+                <h4>Paragon</h4>
+                <p>End-game progression</p>
+            </div>
+            <div class="vb-feat">
+                <div class="vb-feat-icon">&#127760;</div>
+                <h4>Zone Events</h4>
+                <p>Dynamic world events</p>
+            </div>
+            <div class="vb-feat">
+                <div class="vb-feat-icon">&#128081;</div>
+                <h4>Fame System</h4>
+                <p>NPC reputation & quests</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="vb-news">
+        <div class="vb-news-header">
+            <div class="vb-news-title">&#128220; Latest Chronicles</div>
+            <div class="vb-news-link">View All &rarr;</div>
+        </div>
+        <div class="vb-news-list">
+            <div class="vb-news-item">
+                <div class="vb-news-item-date">Feb 10, 2026</div>
+                <div class="vb-news-item-title">New Dungeon: The Abyss of Shadows — Tier 3 End-game Content</div>
+                <div class="vb-news-item-tag">Update</div>
+            </div>
+            <div class="vb-news-item">
+                <div class="vb-news-item-date">Feb 08, 2026</div>
+                <div class="vb-news-item-title">Balance Patch v1.4.3 — Nightblade & Stellar Adjustments</div>
+                <div class="vb-news-item-tag">Patch</div>
+            </div>
+            <div class="vb-news-item">
+                <div class="vb-news-item-date">Feb 05, 2026</div>
+                <div class="vb-news-item-title">Valentine's Event — Special Cosmetics & Double XP Weekend</div>
+                <div class="vb-news-item-tag">Event</div>
+            </div>
+            <div class="vb-news-item">
+                <div class="vb-news-item-date">Feb 01, 2026</div>
+                <div class="vb-news-item-title">New Shop Outfits: Golden Set & Revenant Collection Now Available</div>
+                <div class="vb-news-item-tag">Store</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="vb-footer">
+        <div class="vb-footer-brand">ASCENSION ONLINE</div>
+        <div class="vb-footer-copy">&copy; 2026 Ascension Online. All rights reserved.</div>
+    </footer>
+</div>
+</div>
+
+<!-- ======================================== -->
+<!-- VARIANT C — MODERN GAMING                -->
+<!-- ======================================== -->
+<div id="mockup-c" class="mockup-page">
+<div class="vc-body">
+    <nav class="vc-nav">
+        <div class="vc-nav-logo">
+            <div class="vc-nav-logo-icon">A</div>
+            <div class="vc-nav-logo-text">ASCENSION</div>
+        </div>
+        <div class="vc-nav-center">
+            <a href="#" class="active">Home</a>
+            <a href="#">Library</a>
+            <a href="#">Highscores</a>
+            <a href="#">Forum</a>
+            <a href="#">Store</a>
+        </div>
+        <div class="vc-nav-right">
+            <button class="vc-btn-login">Log in</button>
+            <button class="vc-btn-register">Play Free</button>
+        </div>
+    </nav>
+
+    <section class="vc-hero">
+        <div class="vc-hero-content">
+            <div class="vc-hero-status">
+                <span class="pulse"></span>
+                Server Online — 247 Playing
+            </div>
+            <h1>The Ultimate<br><span class="gold">Custom RPG</span><br>Experience</h1>
+            <p class="vc-hero-desc">11 unique classes, deep character progression, tiered dungeons, and a thriving community. No pay-to-win — just pure adventure.</p>
+            <div class="vc-hero-cta">
+                <button class="vc-btn-big">&#9654; Play Now</button>
+                <button class="vc-btn-big-outline">&#8681; Download</button>
+            </div>
+        </div>
+
+        <div class="vc-hero-panel">
+            <div class="vc-glass-card">
+                <div class="vc-glass-card-header">
+                    <div class="vc-glass-card-label">Online</div>
+                    <div class="vc-glass-card-badge">Live</div>
+                </div>
+                <div class="vc-glass-card-value">247</div>
+                <div class="vc-glass-card-sub">Players online now</div>
+            </div>
+            <div class="vc-glass-card">
+                <div class="vc-glass-card-header">
+                    <div class="vc-glass-card-label">Top Level</div>
+                </div>
+                <div class="vc-glass-card-value">485</div>
+                <div class="vc-glass-card-sub">Highest adventurer</div>
+            </div>
+            <div class="vc-glass-card wide">
+                <div class="vc-glass-card-header">
+                    <div class="vc-glass-card-label">#1 Player</div>
+                </div>
+                <div class="vc-glass-card-player">
+                    <div class="vc-glass-card-avatar">&#9876;</div>
+                    <div class="vc-glass-card-player-info">
+                        <h4>nokturno</h4>
+                        <p>Level 485 &bull; Dragon Knight &bull; Guild: Ascendants</p>
+                    </div>
+                </div>
+            </div>
+            <div class="vc-glass-card">
+                <div class="vc-glass-card-header">
+                    <div class="vc-glass-card-label">Accounts</div>
+                </div>
+                <div class="vc-glass-card-value">1.2K</div>
+                <div class="vc-glass-card-sub">Registered players</div>
+            </div>
+            <div class="vc-glass-card">
+                <div class="vc-glass-card-header">
+                    <div class="vc-glass-card-label">Next Event</div>
+                    <div class="vc-glass-card-badge" style="background:rgba(212,168,67,0.1);color:#d4a843;">Soon</div>
+                </div>
+                <div class="vc-glass-card-value" style="font-size:24px;">Boss Rush</div>
+                <div class="vc-glass-card-sub">In 2h 45m</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="vc-features">
+        <div class="vc-feat-card">
+            <div class="vc-feat-emoji">&#9876;</div>
+            <h4>11 Unique Classes</h4>
+            <p>Magician, Templar, Nightblade, Dragon Knight, and more.</p>
+        </div>
+        <div class="vc-feat-card">
+            <div class="vc-feat-emoji">&#127984;</div>
+            <h4>Tiered Dungeons</h4>
+            <p>Challenge bosses and earn exclusive gear in 3 difficulty tiers.</p>
+        </div>
+        <div class="vc-feat-card">
+            <div class="vc-feat-emoji">&#10024;</div>
+            <h4>Paragon System</h4>
+            <p>Endless end-game progression after hitting the level cap.</p>
+        </div>
+        <div class="vc-feat-card">
+            <div class="vc-feat-emoji">&#127942;</div>
+            <h4>Weekly Events</h4>
+            <p>Zone captures, boss rushes, PvP arenas, and seasonal content.</p>
+        </div>
+    </div>
+
+    <div class="vc-news">
+        <div class="vc-news-top">
+            <div class="vc-news-title">Latest News</div>
+            <div class="vc-news-more">See all &rarr;</div>
+        </div>
+        <div class="vc-news-grid">
+            <div class="vc-news-card">
+                <div class="vc-news-card-gradient">&#127984;</div>
+                <div class="vc-news-card-body">
+                    <div class="vc-news-card-date">Feb 10, 2026</div>
+                    <h4>New Dungeon: The Abyss of Shadows</h4>
+                    <p>End-game tier 3 dungeon with exclusive rewards and boss mechanics.</p>
+                </div>
+            </div>
+            <div class="vc-news-card">
+                <div class="vc-news-card-gradient" style="background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(100,50,200,0.05));">&#9878;</div>
+                <div class="vc-news-card-body">
+                    <div class="vc-news-card-date">Feb 08, 2026</div>
+                    <h4>Balance Patch v1.4.3</h4>
+                    <p>Major adjustments to Nightblade and Stellar class abilities.</p>
+                </div>
+            </div>
+            <div class="vc-news-card">
+                <div class="vc-news-card-gradient" style="background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(200,50,50,0.03));">&#10084;</div>
+                <div class="vc-news-card-body">
+                    <div class="vc-news-card-date">Feb 05, 2026</div>
+                    <h4>Valentine's Event</h4>
+                    <p>Special quests, cosmetics, and double XP starting this Friday!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="vc-footer">
+        <div class="vc-footer-left">
+            <div class="vc-footer-icon">A</div>
+            <div class="vc-footer-name">Ascension Online</div>
+        </div>
+        <div class="vc-footer-copy">&copy; 2026 Ascension Online. All rights reserved.</div>
+    </footer>
+</div>
+</div>
+
+<script>
+function show(variant) {
+    document.querySelectorAll('.mockup-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.mockup-selector button').forEach(b => b.classList.remove('active'));
+    document.getElementById('mockup-' + variant).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>

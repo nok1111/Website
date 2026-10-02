@@ -1,0 +1,1 @@
+{"God":[{"group_id":"6","name":"Druditest","account_id":"2","online":0},{"group_id":"6","name":"nokturno","account_id":"1","online":1}]}

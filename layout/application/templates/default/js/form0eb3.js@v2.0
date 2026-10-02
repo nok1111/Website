@@ -1,0 +1,81 @@
+$(document).ready(function() {
+	
+	// Ajax form
+	
+	$('form:not(.unitpay_form)').submit(function(event) {
+		$('.loading').append('<div class="loading-bg"><div class="img"></div></div>');
+		$('.loading').addClass('active');
+		
+		var json;
+		event.preventDefault();
+		$.ajax({
+			type: $(this).attr('method'), 
+			url: $(this).attr('action'),
+			id: $(this).attr('id'),
+			data: new FormData(this),
+			contentType: false,
+			cache: false,
+			processData: false,
+			success: function(result) {
+				json = jQuery.parseJSON(result);
+				if (json.url) {
+					window.location.href = json.url;
+				}
+				else{
+					if(json.status == 'success reload'){
+
+						set_cookie( "msg", json.message);
+						setTimeout(function(){
+							location.reload();	
+						}, 1000);
+						
+					}
+					else if(json.status == 'success' || json.status == 'error'){
+						
+						setTimeout(function(){
+							$(".loading").removeClass("active");
+						}, 500);
+						
+						setTimeout(function(){
+							$('.loading').empty();
+						}, 1000);
+						
+						$('.messages').empty();
+						setTimeout(function(){
+							$('.messages').append('<div class="messages__message '+ json.status +'"><div class="messages__title">' + json.message + '</div><div class="messages__bar"></div></div>');
+						}, 500);
+						
+					}
+				}
+			},
+		})
+	}
+	);
+	if (get_cookie("msg")) {
+		$('.messages').append('<div class="messages__message success"><div class="messages__title">' + get_cookie("msg") + '</div><div class="messages__bar"></div></div>');
+		delete_cookie ("msg");
+	}
+	
+	// Prefix
+	
+	function genPrefix(){
+		var prefix = "";
+		var possible = "abcdefghijklmnopqrstuvwxyz";
+
+		for( var i=0; i < 3; i++ )
+			prefix += possible.charAt(Math.floor(Math.random() * possible.length));
+
+		return prefix;
+	}
+	
+	$(".prefix-input").val(genPrefix() + '_');
+	
+	$('.prefix-refresh').click(function(event){
+		
+		var prefix = '123';
+		
+		$(".prefix-input").val(genPrefix() + '_');
+		
+	});
+
+});

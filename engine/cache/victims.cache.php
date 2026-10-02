@@ -1,0 +1,1 @@
+[{"name":"Bloodmage","Deaths":"5"},{"name":"Samurai","Deaths":"5"},{"name":"Monkys","Deaths":"5"},{"name":"Druids","Deaths":"5"},{"name":"Light","Deaths":"4"},{"name":"Frijolito","Deaths":"4"},{"name":"Tinker","Deaths":"3"},{"name":"nokturno","Deaths":"3"},{"name":"Warden","Deaths":"2"},{"name":"Rogue","Deaths":"2"}]
